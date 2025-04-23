@@ -88,6 +88,9 @@ nav {
     border: #333;
     padding: 15px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    position: relative;
 }
 
 .student-item img {
@@ -101,6 +104,26 @@ nav {
     font-weight: 600;
     color: #81a7d7
 }
+
+.student-item:hover {
+    background-color: #99c5dd !important;
+    transform: rotate(3deg);
+}
+
+.student-item:hover img {
+    transform: scale(1.1) rotate(3deg);
+}
+
+.student-item:hover div {
+    transform: scale(1.05) rotate(-1deg);
+}
+
+.student-item img, .student-item div {
+    transition: all 0.3s ease-in-out;
+    transform-origin: center;
+}
+
+
 .perfil-container {
     display: flex;
     align-items: flex-start;
