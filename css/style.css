@@ -33,6 +33,11 @@ nav {
     
 }
 
+section {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
 .nav-title, .user-greeting, .search-form{
     background-color: #8eb0e9;
     color: #f5f5f5;
@@ -72,8 +77,8 @@ nav {
 }
 
 .student-list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     list-style: none;
     padding: 0;
@@ -102,7 +107,7 @@ nav {
 
 .student-item div {
     font-weight: 600;
-    color: #81a7d7
+    color: #81a7d7;
 }
 
 .student-item:hover {
@@ -133,6 +138,7 @@ nav {
     margin: auto;
 }
 .perfil-container img {
+    flex: 1;
     margin-right: 20px;
     width: 200px;
     height: auto;
@@ -168,4 +174,145 @@ nav {
 }
 .perfil-info a:visited {
     color: red;
+}
+
+@media (max-width: 480px) {
+    .body-index {
+        max-width: 100%;
+        padding: 10px;
+    }
+    nav{
+        width: 100%;
+        height: auto;
+    }
+    .search-form input {
+        width: 20%;
+    }
+    .student-item img {
+        width: 20vw;
+        height: 20vw;
+    }
+    .student-item {
+        width: 30%;
+        height: 30%;
+        font-size: 2.5vw;
+    }
+    .nav-title span {
+        font-size: 2vw;
+    }
+    .nav-title h1 {
+        font-size: 3vw;
+    }
+
+    .perfil-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+    .perfil-container img {
+        height: auto;
+    }
+    .perfil-info {
+        font-size: 3vw;
+    }
+    
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .body-index {
+        max-width: 90%;
+    }
+    nav{
+        width: 100%;
+        height: auto;
+    }
+    .search-form input {
+        width: 30%;
+    }
+    .student-item {
+        width: 29%;
+        height: 29%;
+        font-size: 2vw;
+    }
+    .student-item img {
+        width: auto;
+    }
+    .nav-title span {
+        font-size: 2vw;
+    }
+    .nav-title h1 {
+        font-size: 3vw;
+    }
+    .perfil-container {
+        max-width: 90%;
+        margin-right: 10%;
+    }
+    .perfil-container img {
+        height: auto;
+    }
+    .perfil-info{
+        font-size: 2vw;
+    }
+    
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .body-index {
+        max-width: 80%;
+    }
+    nav{
+        width: 100%;
+        height: auto;
+    }
+    .search-form input {
+        width: 40%;
+    }
+    .student-item {
+        width: 29%;
+        height: 29%;
+    }
+    .student-item img {
+        width: auto;
+    }
+    .nav-title span {
+        font-size: 2vw;
+    }
+    .nav-title h1 {
+        font-size: 3vw;
+    }
+    .perfil-container {
+        max-width: 80%;
+        margin-right: 15%;
+    }
+    .perfil-container img {
+        height: auto;
+    }
+    .perfil-info{
+        font-size: 1.8vw;
+    }
+    
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+    .body-index {
+        max-width: 850px;
+    }
+    nav{
+        width: 100%;
+        height: auto;
+    }
+    .student-item {
+        width: 30%;
+        height: 30%;
+    }
+    .student-item img {
+        height: auto;
+    }
+    .perfil-container {
+        max-width: 850px;
+        margin-right: 15%;
+    }
+    .perfil-info h1 {
+        font-size: 1.5vw + 1.2em;
+    }
 }
