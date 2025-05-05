@@ -19,16 +19,36 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => console.error('Error cargando configuración:', error));
     }
 
+    function getUrlParameter(name) {
+        name = name.replace(/[\[\]]/g, '\\$&');
+        const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+        const results = regex.exec(window.location.href);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+    
     // Función para determinar el idioma inicial
     function detectarIdioma() {
+        // Verificar si hay un idioma en la URL (lang=ES|EN|PT)
+        const urlLang = getUrlParameter('lang');
+        if (urlLang && ['ES', 'EN', 'PT'].includes(urlLang.toUpperCase())) {
+            const lang = urlLang.toUpperCase();
+            localStorage.setItem('preferredLanguage', lang); // Guardar preferencia
+            return lang;
+        }
+        
+        // Si no, verificar si hay un idioma guardado en localStorage
         const savedLang = localStorage.getItem('preferredLanguage');
         if (savedLang) return savedLang;
         
+        //Si no, detectar idioma del navegador
         const browserLang = navigator.language || navigator.userLanguage;
         if (browserLang.startsWith('es')) return 'ES';
         if (browserLang.startsWith('en')) return 'EN';
         if (browserLang.startsWith('pt')) return 'PT';
         
+        //Si no, idioma por defecto
         return 'ES';
     }
 
