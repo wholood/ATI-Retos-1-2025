@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATI[UCV] 2024-1</title>
+    <title id="title">ATI[UCV] 2024-1</title>
     <link rel="icon" href="http://www.ciens.ucv.ve/portalasig2/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css"> 
-    <style>
-        
-    </style>
+    <script src="conf/configES.json"></script>
+    <script src="js/index.js" defer></script>
+
 </head>
 <body class="body-index">
     <header>
         <nav>
             <div class="nav-title">
-                <h1>ATI<span>[UCV]</span> 2025-1</h1>
+                <h1 id="nav-1"></h1>
+                <span id="nav-2"></span>
+                <h1 id="nav-3"></h1>
             </div>
-            <div class="user-greeting">
-                Hola, Erimar
-            </div>
+            <div class="user-greeting"> </div>
             <form class="search-form">
-                <input type="search" placeholder="Nombre">
-                <button type="submit">Buscar</button>
+                <input type="search" placeholder="">
+                <button type="submit"></button>
             </form>
         </nav>
     </header>
@@ -30,65 +30,62 @@
         <ul class="student-list">
             <!-- Fila 1 -->
             <li class="student-item">
-                <picture>
-                    <source srcset="29743464/29743464Grande.jpg" media="(min-width: 769px)">
-                    <img src="29743464/29743464Pequena.jpg" alt="Imagen adaptable">
-                </picture>
-                <div>Erimar Reis</div>
+                <img id="student-img-1" alt="Estudiante">
+                <div id="student-name-1"></div>
             </li>
             <li class="student-item">
-                <img src="dummies/dummy2/dummy.jpg" alt="Estudiante">
-                <div>Ana Perez</div>
+                <img id="student-img-2" alt="Estudiante">
+                <div id="student-name-2"></div>
             </li>
             <li class="student-item">
-                <img src="dummies/dummy3/dummy.jpg" alt="Estudiante">
-                <div>Maritza Rodriguez</div>
+                <img id="student-img-3" alt="Estudiante">
+                <div id="student-name-3"></div>
             </li>
             <li class="student-item">
-                <img src="dummies/dummy4/dummy.jpg" alt="Estudiante">
-                <div>Emilio Casado</div>
+                <img id="student-img-4" alt="Estudiante">
+                <div id="student-name-4"></div>
             </li>
 
             <!-- Fila 2 -->
             <li class="student-item">
-                <img src="dummies/dummy5/dummy.jpg" alt="Estudiante">
-                <div>Enrique Colina</div>
+                <img id="student-img-5" alt="Estudiante">
+                <div id="student-name-5"></div>
             </li>
             <li class="student-item">
-                <img src="dummies/dummy6/dummy.jpg" alt="Estudiante">
-                <div>Mariano Pinto</div>
+                <img id="student-img-6" alt="Estudiante">
+                <div id="student-name-6"></div>
             </li>
             <li class="student-item">
-                <img src="dummies/dummy1/dummy.jpg" alt="Estudiante">
-                <div>Rosa Gutierrez</div>
+                <img id="student-img-7" alt="Estudiante">
+                <div id="student-name-7"></div>
             </li>
             <li class="student-item">
-                <img src="dummies/dummy2/dummy.jpg" alt="Estudiante">
-                <div>Joana Perez</div>
+                <img id="student-img-8" alt="Estudiante">
+                <div id="student-name-8"></div>
             </li>
 
             <!-- Fila 3 -->
             <li class="student-item">
-                <img src="dummies/dummy3/dummy.jpg" alt="Estudiante">
-                <div>Carina Casado</div>
+                <img id="student-img-9" alt="Estudiante">
+                <div id="student-name-9"></div>
             </li>
             <li class="student-item">
-                <img src="dummies/dummy4/dummy.jpg" alt="Estudiante">
-                <div>Antonio Hernandez</div>
+                <img id="student-img-10" alt="Estudiante">
+                <div id="student-name-10"></div>
             </li>
             <li class="student-item">
-                <img src="dummies/dummy5/dummy.jpg" alt="Estudiante">
-                <div>Mario Silva</div>
+                <img id="student-img-11" alt="Estudiante">
+                <div id="student-name-11"></div>
             </li>
             <li class="student-item">
-                <img src="dummies/dummy6/dummy.jpg" alt="Estudiante">
-                <div>Rodolfo Rodriguez</div>
+                <img id="student-img-12" alt="Estudiante">
+                <div id="student-name-12"></div>
             </li>
         </ul>
     </section>
 
     <footer>
-        <p>Copyright © 2024 Escuela de computación - ATI. Todos los derechos reservados</p>
+        <p id="copyright"></p>
     </footer>
 </body>
 </html>

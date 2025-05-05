@@ -50,10 +50,10 @@ section {
 .user-greeting {
     padding: 0 20px;
 }
-.nav-title span {
+.nav-title #nav-2 {
     font-size: 0.6em;
 }
-.nav-title h1 {
+.nav-title #nav-1 #nav-3 {
     font-size: 2em;
     margin: 0;
     padding: 0 20px;
@@ -87,7 +87,7 @@ section {
 
 .student-item {
     width: 180px;
-    height: 180px;
+    height: auto;
     text-align: center;
     background: #f4f6f8;
     border: #333;
@@ -127,6 +127,14 @@ section {
     transition: all 0.3s ease-in-out;
     transform-origin: center;
 }
+.no-results {
+    grid-column: 1 / 1;
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2vw;
+    color: #81a7d7;
+    display: block !important;
+}
 
 
 .perfil-container {
@@ -137,10 +145,10 @@ section {
     max-width: 800px;
     margin: auto;
 }
-.perfil-container img {
+.perfil-container #perfil-image {
     flex: 1;
     margin-right: 20px;
-    width: 200px;
+    max-width: 200px;
     height: auto;
     border-top-left-radius: 50px;
 }
@@ -168,7 +176,11 @@ section {
 .perfil-info ul li {
     margin: 5px 0;
 }
-.perfil-info a {
+#perfil-email-enlace {
+    margin: 10px 0;
+    padding: 10px;
+    font-family: 'Franklin Gothic';
+    font-style: italic;
     color: rgb(20, 190, 190);
     text-decoration: none;
 }
@@ -197,10 +209,10 @@ section {
         height: 30%;
         font-size: 2.5vw;
     }
-    .nav-title span {
+    .nav-title #nav-2 {
         font-size: 2vw;
     }
-    .nav-title h1 {
+    .nav-title #nav-1 #nav-3 {
         font-size: 3vw;
     }
 
@@ -237,10 +249,10 @@ section {
     .student-item img {
         width: auto;
     }
-    .nav-title span {
+    .nav-title #nav-2 {
         font-size: 2vw;
     }
-    .nav-title h1 {
+    .nav-title #nav-1 #nav-3 {
         font-size: 3vw;
     }
     .perfil-container {
@@ -274,10 +286,10 @@ section {
     .student-item img {
         width: auto;
     }
-    .nav-title span {
+    .nav-title #nav-2 {
         font-size: 2vw;
     }
-    .nav-title h1 {
+    .nav-title #nav-1 #nav-3 {
         font-size: 3vw;
     }
     .perfil-container {
@@ -306,13 +318,16 @@ section {
         height: 30%;
     }
     .student-item img {
-        height: auto;
+        width: auto;
     }
     .perfil-container {
         max-width: 850px;
         margin-right: 15%;
     }
+    .perfil-container img {
+        height: auto;
+    }
     .perfil-info h1 {
-        font-size: 1.5vw + 1.2em;
+        font-size: 2vw;
     }
 }
