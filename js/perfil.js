@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 })
         ])
         .then(([config, perfil]) => {
-            document.getElementById('perfil-title').textContent = `${config.saludo} ${perfil.nombre}`;
+            document.getElementById('perfil-title').textContent = `${perfil.nombre}`;
             document.getElementById('perfil-name').textContent = perfil.nombre;
             document.getElementById('perfil-description').textContent = perfil.descripcion;
             

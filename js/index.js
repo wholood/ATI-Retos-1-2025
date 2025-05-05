@@ -1,22 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
+    let perfiles = []; // Variable para almacenar todos los estudiantes
+    let currentConfig = {}; // Variable para almacenar la configuración actual
+    
     function cargarConfiguracion(language) {
         const configFile = `https://raw.githubusercontent.com/wholood/ATI-Retos-1-2025/reto-03/conf/config${language}.json`;
-        fetch(configFile)
+        return fetch(configFile)
             .then(response => response.text())
             .then(text => {
                 const jsonString = text.replace(/^const config\s*=\s*/, '').replace(/;\s*$/, '');
-                const config = JSON.parse(jsonString);
-                
-                document.getElementById('title').textContent = `${config.sitio[0]}${config.sitio[1]} ${config.sitio[2]}`;
-                document.querySelector('.nav-title #nav-1').textContent = `${config.sitio[0]}`;
-                document.querySelector('.nav-title #nav-2').textContent = `${config.sitio[1]}`;
-                document.querySelector('.nav-title #nav-3').textContent = `${config.sitio[2]}`;
-                document.getElementById('copyright').textContent = config.copyRight;
-                document.querySelector('.search-form input').placeholder = config.nombre;
-                document.querySelector('.search-form button').textContent = config.buscar;
-                document.querySelector('.user-greeting').textContent = config.saludo;
-            })
-            .catch(error => console.error('Error cargando configuración:', error));
+                currentConfig = JSON.parse(jsonString);
+                return currentConfig;
+            });
     }
 
     function getUrlParameter(name) {
@@ -28,57 +22,121 @@ document.addEventListener('DOMContentLoaded', function() {
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
     
-    // Función para determinar el idioma inicial
     function detectarIdioma() {
-        // Verificar si hay un idioma en la URL (lang=ES|EN|PT)
         const urlLang = getUrlParameter('lang');
         if (urlLang && ['ES', 'EN', 'PT'].includes(urlLang.toUpperCase())) {
             const lang = urlLang.toUpperCase();
-            localStorage.setItem('preferredLanguage', lang); // Guardar preferencia
+            localStorage.setItem('preferredLanguage', lang);
             return lang;
         }
         
-        // Si no, verificar si hay un idioma guardado en localStorage
         const savedLang = localStorage.getItem('preferredLanguage');
         if (savedLang) return savedLang;
         
-        //Si no, detectar idioma del navegador
         const browserLang = navigator.language || navigator.userLanguage;
         if (browserLang.startsWith('es')) return 'ES';
         if (browserLang.startsWith('en')) return 'EN';
         if (browserLang.startsWith('pt')) return 'PT';
         
-        //Si no, idioma por defecto
         return 'ES';
     }
 
     function cargarEstudiantes() {
-        fetch('https://raw.githubusercontent.com/wholood/ATI-Retos-1-2025/reto-03/datos/index.json')
+        return fetch('https://raw.githubusercontent.com/wholood/ATI-Retos-1-2025/reto-03/datos/index.json')
             .then(response => response.text())
             .then(text => {
                 const jsonString = text.replace(/^const perfiles\s*=\s*/, '').replace(/;\s*$/, '');
-                const perfiles = JSON.parse(jsonString);
-                // Mostrar los primeros 12 estudiantes
-                for (let i = 0; i < 12 && i < perfiles.length; i++) {
-                    const estudiante = perfiles[i];
-                    const imgElement = document.getElementById(`student-img-${i+1}`);
-                    const nameElement = document.getElementById(`student-name-${i+1}`);
-                    
-                    if (imgElement) {
-                        imgElement.src = `${estudiante.imagen}`;
-                        imgElement.alt = estudiante.ci;
-                    }
-                    
-                    if (nameElement) {
-                        nameElement.textContent = estudiante.nombre;
-                    }
-                }
-            })
-            .catch(error => console.error('Error cargando estudiantes:', error));
+                perfiles = JSON.parse(jsonString);
+                mostrarEstudiantes(perfiles.slice(0, 12)); // Mostrar primeros 12
+            });
     }
 
-    const initialLanguage = detectarIdioma();
-    cargarConfiguracion(initialLanguage);
-    cargarEstudiantes();
+    function mostrarEstudiantes(estudiantesAMostrar) {
+        const studentList = document.querySelector('.student-list');
+        studentList.innerHTML = '';
+        
+        const existingNoResults = document.querySelector('.no-results');
+        if (existingNoResults) {
+            existingNoResults.remove();
+        }
     
+        if (!estudiantesAMostrar || estudiantesAMostrar.length === 0) {
+            const noResults = document.createElement('li');
+            noResults.className = 'no-results';
+            const message = currentConfig?.noResults 
+                ? currentConfig.noResults.replace('[query]', lastSearchQuery || '')
+                : `No hay resultados para: ${lastSearchQuery || ''}`;
+            
+            noResults.textContent = message;
+            studentList.appendChild(noResults);
+            return;
+        }
+    
+        
+        estudiantesAMostrar.slice(0, 12).forEach((estudiante, index) => {
+            const studentItem = document.createElement('li');
+            studentItem.className = 'student-item';
+            
+            const imgElement = document.createElement('img');
+            imgElement.id = `student-img-${index+1}`;
+            imgElement.src = estudiante.imagen;
+            imgElement.alt = estudiante.ci || 'Estudiante';
+            
+            const nameElement = document.createElement('div');
+            nameElement.id = `student-name-${index+1}`;
+            nameElement.textContent = estudiante.nombre;
+            
+            studentItem.appendChild(imgElement);
+            studentItem.appendChild(nameElement);
+            studentList.appendChild(studentItem);
+        });
+    }
+
+    let lastSearchQuery = '';
+    function setupBusqueda() {
+        const searchInput = document.querySelector('.search-form input');
+        const searchForm = document.querySelector('.search-form');
+        
+        searchInput.addEventListener('input', function(e) {
+            lastSearchQuery = e.target.value.trim().toLowerCase();
+            if (lastSearchQuery === '') {
+                mostrarEstudiantes(perfiles.slice(0, 12));
+                return;
+            }
+            
+            const resultados = perfiles.filter(estudiante => 
+                estudiante.nombre.toLowerCase().includes(lastSearchQuery)
+            ).slice(0, 12); 
+            
+            mostrarEstudiantes(resultados);
+        });
+        
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+        });
+    }
+
+    // Inicialización
+    const initialLanguage = detectarIdioma();
+    cargarConfiguracion(initialLanguage)
+        .then(() => {
+            
+            document.getElementById('title').textContent = `${currentConfig.sitio[0]}${currentConfig.sitio[1]} ${currentConfig.sitio[2]}`;
+            document.querySelector('.nav-title #nav-1').textContent = currentConfig.sitio[0];
+            document.querySelector('.nav-title #nav-2').textContent = currentConfig.sitio[1];
+            document.querySelector('.nav-title #nav-3').textContent = currentConfig.sitio[2];
+            document.getElementById('copyright').textContent = currentConfig.copyRight;
+            document.querySelector('.search-form input').placeholder = currentConfig.nombre;
+            document.querySelector('.search-form button').textContent = currentConfig.buscar;
+            document.querySelector('.user-greeting').textContent = currentConfig.saludo ;
+            
+           
+            return cargarEstudiantes();
+        })
+        .then(() => {
+            setupBusqueda();
+        })
+        .catch(error => {
+            console.error('Error inicializando:', error);
+        });
 });
