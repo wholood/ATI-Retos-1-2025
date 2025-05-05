@@ -50,10 +50,10 @@ section {
 .user-greeting {
     padding: 0 20px;
 }
-.nav-title span {
+.nav-title #nav-2 {
     font-size: 0.6em;
 }
-.nav-title h1 {
+.nav-title #nav-1 #nav-3 {
     font-size: 2em;
     margin: 0;
     padding: 0 20px;
@@ -197,10 +197,10 @@ section {
         height: 30%;
         font-size: 2.5vw;
     }
-    .nav-title span {
+    .nav-title #nav-2 {
         font-size: 2vw;
     }
-    .nav-title h1 {
+    .nav-title #nav-1 #nav-3 {
         font-size: 3vw;
     }
 
@@ -237,10 +237,10 @@ section {
     .student-item img {
         width: auto;
     }
-    .nav-title span {
+    .nav-title #nav-2 {
         font-size: 2vw;
     }
-    .nav-title h1 {
+    .nav-title #nav-1 #nav-3 {
         font-size: 3vw;
     }
     .perfil-container {
@@ -274,10 +274,10 @@ section {
     .student-item img {
         width: auto;
     }
-    .nav-title span {
+    .nav-title #nav-2 {
         font-size: 2vw;
     }
-    .nav-title h1 {
+    .nav-title #nav-1 #nav-3 {
         font-size: 3vw;
     }
     .perfil-container {
