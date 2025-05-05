@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     function cargarConfiguracion(language) {
-        const configFile = `conf/config${language}.json`;
+        const configFile = `https://raw.githubusercontent.com/wholood/ATI-Retos-1-2025/reto-03/conf/config${language}.json`;
         fetch(configFile)
             .then(response => response.text())
             .then(text => {
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function cargarEstudiantes() {
-        fetch('datos/index.json')
+        fetch('https://raw.githubusercontent.com/wholood/ATI-Retos-1-2025/reto-03/datos/index.json')
             .then(response => response.text())
             .then(text => {
                 const jsonString = text.replace(/^const perfiles\s*=\s*/, '').replace(/;\s*$/, '');

@@ -137,10 +137,10 @@ section {
     max-width: 800px;
     margin: auto;
 }
-.perfil-container img {
+.perfil-container #perfil-image {
     flex: 1;
     margin-right: 20px;
-    width: 200px;
+    max-width: 200px;
     height: auto;
     border-top-left-radius: 50px;
 }
@@ -168,7 +168,11 @@ section {
 .perfil-info ul li {
     margin: 5px 0;
 }
-.perfil-info a {
+#perfil-email-enlace {
+    margin: 10px 0;
+    padding: 10px;
+    font-family: 'Franklin Gothic';
+    font-style: italic;
     color: rgb(20, 190, 190);
     text-decoration: none;
 }

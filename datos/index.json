@@ -1,7 +1,7 @@
 const perfiles = [
     {
         "ci": "29743464",
-        "imagen": "29743464\/29743464Grande.jpg",
+        "imagen": "29743464\/29743464.jpg",
         "nombre": "Erimar Reis"
     },
     {
@@ -41,7 +41,7 @@ const perfiles = [
     },
     {
         "ci": "20117857",
-        "imagen": "20117857\/20117857.PNG",
+        "imagen": "20117857\/20117857.jpg",
         "nombre": "Angel Acosta"
     },
     {

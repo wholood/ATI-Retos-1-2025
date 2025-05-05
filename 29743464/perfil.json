@@ -1,8 +1,6 @@
 const perfil = {	
 	"nombre":"Erimar Reis",
-	"descripcion":"Soy estudiante de Computación en la Universidad Central de Venezuela.
-                Me gusta aprender cosas nuevas, especialmente sobre programación y tecnología.
-                Me encanta la música y disfruto mucho de los videojuegos."
+	"descripcion":"Soy estudiante de Computación en la Universidad Central de Venezuela.\nMe gusta aprender cosas nuevas, especialmente sobre programación y tecnología.\nMe encanta la música y disfruto mucho de los videojuegos.",
 	"color": "Azul",
 	"libro": ["Un final perfecto - John Katzenbach"],
 	"musica": ["Pop, Rock, Clásica"],
