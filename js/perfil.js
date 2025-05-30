@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
+    console.log("Caso 1 - Función tradicional (DOMContentLoaded):", this);
     // Función para obtener parámetros de la URL
     function getUrlParameter(name) {
+        console.log("Caso 2 - Función tradicional (getUrlParameter):", this);
         name = name.replace(/[\[\]]/g, '\\$&');
         const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
         const results = regex.exec(window.location.href);
@@ -46,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     function aplicarTraducciones(config) {
+        console.log("Caso 3 - Función tradicional (aplicarTraducciones):", this);
         
         document.getElementById('datos-color').innerHTML = `<strong>${config.color}:</strong> ${perfil.color}`;
         document.getElementById('datos-libro').innerHTML= `<strong>${config.libro}:</strong> ${perfil.libro.join(', ')}`;
