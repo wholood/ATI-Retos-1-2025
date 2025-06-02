@@ -56,7 +56,14 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('datos-videojuegos').innerHTML = `<strong>${config.video_juego}:</strong> ${perfil.video_juego.join(', ')}`;
         document.getElementById('datos-lenguaje').innerHTML= `<strong>${config.lenguajes}:</strong> ${perfil.lenguajes.join(', ')}`;
         document.getElementById('perfil-email').innerHTML = config.email.replace('[email]', `<a id="perfil-email-enlace" href="mailto:${perfil.email}">${perfil.email}</a>`);
-
+        const emailLink = document.getElementById('perfil-email-enlace');
+        emailLink.href = `mailto:${perfil.email}`;
+        emailLink.textContent = perfil.email;
+        
+        // Cambiar color cuando se visita el enlace
+        emailLink.addEventListener('click', function() {
+            this.style.color = 'red';
+        });
     }
 
     const ciPerfil = getUrlParameter('ci');

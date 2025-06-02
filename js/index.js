@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(text => {
                 const jsonString = text.replace(/^const perfiles\s*=\s*/, '').replace(/;\s*$/, '');
                 perfiles = JSON.parse(jsonString);
-                mostrarEstudiantes(perfiles.slice(0, 12)); // Mostrar primeros 12
+                mostrarEstudiantes(perfiles);
             });
     }
 
@@ -73,17 +73,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
         
-        estudiantesAMostrar.slice(0, 12).forEach((estudiante, index) => {
+        estudiantesAMostrar.forEach(estudiante => {
             const studentItem = document.createElement('li');
             studentItem.className = 'student-item';
             
             const imgElement = document.createElement('img');
-            imgElement.id = `student-img-${index+1}`;
             imgElement.src = estudiante.imagen;
             imgElement.alt = estudiante.ci || 'Estudiante';
             
             const nameElement = document.createElement('div');
-            nameElement.id = `student-name-${index+1}`;
             nameElement.textContent = estudiante.nombre;
             
             studentItem.appendChild(imgElement);
@@ -91,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
             studentList.appendChild(studentItem);
         });
     }
-
+    
     let lastSearchQuery = '';
     function setupBusqueda() {
         const searchInput = document.querySelector('.search-form input');
