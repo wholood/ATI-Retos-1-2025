@@ -26,12 +26,10 @@ RUN a2ensite 000-default.conf && \
     a2enmod rewrite
 
 
-COPY start.sh /
-RUN chmod +x /start.sh
-
+RUN chmod +x /var/www/html/start.sh
 
 RUN a2enmod proxy proxy_http rewrite
 
 EXPOSE 80
 
-CMD ["/start.sh"]
+CMD ["/var/www/html/start.sh"]
